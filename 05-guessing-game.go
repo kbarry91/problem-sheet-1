@@ -10,63 +10,40 @@ func main() {
 
 	var userinput int//variable to take user input
 	var randomNum int = rand.Intn(100)//generate random number
+	var prevNum int
 	var counter int 
 	var numFound bool =false
-	var numEntered bool = false
-	var numsPicked [50]int
-	var i int = 0
 
 	fmt.Println()
 	fmt.Println("Number Guessing Game")
 	fmt.Println("====================")
 
-	for numFound != true{//run while numfound = false
+	//loop while numfound = false
+	for numFound != true{
 		
-		//take user input 
+		//take user input from console
 		fmt.Print("Please enter a number(1-100):" )
 		fmt.Scan(&userinput)
-		//counter = counter +1//increment counter
-		fmt.Println(counter)
-		i++
-		numsPicked[i] = userinput
+		counter++
 
-		for numEntered!=true{
-			for y:=0 ;y< 50; y++{
-				
-			
-				if numsPicked[y]==userinput{
-					fmt.Println(counter)
-					counter++
-					numEntered=true
-				}
-			}
+		if userinput==prevNum{
+			counter--
+			fmt.Println("Number already chosen")			
 		}
-		/*
-		for y:=0 ;y< 50; y++{
-			
-		
-			if numsPicked[y]==userinput{
-				fmt.Println(counter)
-				//counter--
-			}
-			
-		}
-		*/
-		
+
+		//compare user input to random number
 		if userinput >randomNum{
 			fmt.Println("Number was too large")
 		}else if userinput < randomNum{
 			fmt.Println("Number was too small")
-		}//else if
-
-		if userinput == randomNum{
+		}else if  userinput == randomNum{
 			fmt.Println()
 			fmt.Println("Guess correct Random number was ",randomNum)
 			fmt.Println("Took ",counter," attempts")
-			
 			numFound = true ;//set bool numFound to true
 		}//if
-			numFound=false
+
+		prevNum = userinput
+		
 	}//for
-	
-}
+}//main
