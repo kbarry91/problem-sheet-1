@@ -1,15 +1,25 @@
-//  Author: Kevin Barry
-//  Date:   21/09/2017
-//  Guessing game
+/*	Author: Kevin Barry
+  	Date:   21/09/2017
+  	Guessing game
+*/
+
 package main
 
 import "fmt"
 import "math/rand"//import for random number
+import "time"
+/*
+function to generate random num from time seed
+adapted from http://golangcookbook.blogspot.ie/2012/11/generate-random-number-in-given-range.html
+*/
+func random(min, max int) int {
+    rand.Seed(time.Now().Unix())
+    return rand.Intn(max - min) + min
+}
 
 func main() {
-
 	var userinput int//variable to take user input
-	var randomNum int = rand.Intn(100)//generate random number
+	randomNum := random(1, 100)//generate random number
 	var prevNum int
 	var counter int 
 	var numFound bool =false
