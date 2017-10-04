@@ -1,32 +1,46 @@
 //  Author: Kevin Barry
 //  Date:   27/09/2017
 //  Description : function to calculate the square root of a number using Newton’s method.
+// Adapted from 9. on https://data-representation.github.io/problems/go-fundamentals.html
+
+
 package main
 
-	import {
-import "fmt"
-import "fmt"
-		"fmt"//import for input/output
-		"math"// import for math (math.Sqrt(x))
-	}//imports
+import "fmt"//import for input/output
+import "math"// import for math (math.Sqrt(x))
+
 
 	//function to run newthons method
-	func z_next(z float64,x float64)float64{
-		return z - (((z*x) - x) / (2*z))
-	}//z_next
+	func newton(x float64,z float64)float64{
+		//var y float64  =	z - (((z*x) - x) / (2*z))
+		return z - (((z*z) - x) / (2*z))
+	
+	}//newton
 
 	func main(){
+		
+		var counter int =0;
+		var x float64;
 		//number to calculate square root
-		x := 20.0
+		//take user input from console
+		fmt.Printf("Newtons Theory Square Root Calculator")
+		fmt.Printf("\n=====================================")
+		fmt.Print("\nPlease enter a number to test:")
+		fmt.Scan(&x)
+		fmt.Print("\n")
 
 		//initial guess
 		z :=  float64(1)
 
 		//loop through using newtons method until next guess == current guess
-		for z = 1.0; z != z_next(z,x); z = z_next(z,x){
+		for z = 1.0; z != newton(x,z); z = newton(x,z){
+		//for z = 1.0; z_next(x,z)<math.Sqrt(x); z = z_next(x,z){
 			//display current guess
-			fmt.Println("The current Guess is %12.8f \n ",z)
+			counter++
+			fmt.Printf("Guess %d :%12.10f \n",counter,z)
 		}//for
 
-		fmt.Println("The square of %f")
+		fmt.Printf("The square of %.2f is %12.10f according to Newtons Theory\n",x,z)
+		fmt.Printf("The square of %.2f is %.8f according to 'math.Sqrt(x)'",x,math.Sqrt(x))
+
 	}//main
