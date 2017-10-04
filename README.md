@@ -10,10 +10,16 @@ Clone the repository in cmd by executing the following command
 ```git clone https://github.com/kbarry91/problem-sheet-1.git```
 
 Now you can build an .exe file with the command
+
+
 ```go build <filename.go> ```
+
 and run the program with
+
 ```<filename>``` 
+
 or simply use
+
 ```go run <filename>```
 
 ### Problem set: Go fundamentals
